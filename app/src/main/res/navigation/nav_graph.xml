@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/day1Fragment">
+
+    <fragment
+        android:id="@+id/day1Fragment"
+        android:name="id.hikmah.binar.toastsnackbar.day1.Day1Fragment"
+        android:label="fragment_day1"
+        tools:layout="@layout/fragment_day1" />
+</navigation>
