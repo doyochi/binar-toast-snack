@@ -17,6 +17,8 @@ class Day1Fragment : Fragment() {
     private var _binding: FragmentDay1Binding? = null
     private val binding get() = _binding!!
 
+    private lateinit var snackbar2: Snackbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,9 +39,11 @@ class Day1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showToast()
+        snackbar2 = Snackbar.make(binding.btnSnackbar, "Button SnackBar telah di tekan", Snackbar.LENGTH_SHORT)
         showSnackBar()
         showSnackBarWithAction()
     }
+
 
     private fun showToast(){
         binding.btnToast.setOnClickListener{
@@ -50,7 +54,16 @@ class Day1Fragment : Fragment() {
 
     private fun showSnackBar(){
         binding.btnSnackbar.setOnClickListener{
-            Snackbar.make(it, "Button SnackBar telah di tekan", Snackbar.LENGTH_SHORT).show()
+            snackbar2 = Snackbar.make(it, "Button SnackBar telah di tekan", Snackbar.LENGTH_SHORT)
+                snackbar2.show()
+        }
+    }
+
+    private fun hideSnackBar(){
+        binding.btnDissnackbar.setOnClickListener{
+            if(snackbar2.isShown){
+                snackbar2.dismiss()
+            }
         }
     }
 
@@ -73,7 +86,7 @@ class Day1Fragment : Fragment() {
         return Snackbar.make(it, message, Snackbar.LENGTH_INDEFINITE)
     }
 
-    private fun customColor(it: View, message: String) : Snackbar {
+    private fun customColorSnackBar(it: View, message: String) : Snackbar {
         val snackbar = createSnackBar(it, message)
         snackbar.setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.purple_200))
             .setActionTextColor(ContextCompat.getColor(requireContext(), R.color.black))
